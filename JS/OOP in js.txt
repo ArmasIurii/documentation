@@ -1,0 +1,87 @@
+Object-oriented programming (OOP) is a programming paradigm that allows you to organize and structure your code around objects, which are instances of classes. JavaScript, despite being primarily known as a prototype-based language, supports object-oriented programming through its syntax and features.
+
+In JavaScript, objects are created using constructor functions or object literals. Let's explore the key concepts of OOP in JavaScript:
+
+1. Classes: ES6 (ECMAScript 2015) introduced the `class` syntax, providing a more familiar and structured way to define classes in JavaScript. A class serves as a blueprint for creating objects with shared properties and methods.
+
+```javascript
+class Car {
+  constructor(make, model) {
+    this.make = make;
+    this.model = model;
+  }
+
+  drive() {
+    console.log(`Driving ${this.make} ${this.model}`);
+  }
+}
+
+const myCar = new Car('Toyota', 'Corolla');
+myCar.drive(); // Output: Driving Toyota Corolla
+```
+
+2. Constructors: Constructors are special methods called when creating new instances of a class. They are responsible for initializing the object's properties.
+
+```javascript
+class Car {
+  constructor(make, model) {
+    this.make = make;
+    this.model = model;
+  }
+
+  // ...
+}
+
+const myCar = new Car('Toyota', 'Corolla');
+console.log(myCar.make); // Output: Toyota
+console.log(myCar.model); // Output: Corolla
+```
+
+3. Prototypes and Inheritance: JavaScript uses prototypal inheritance, where objects can inherit properties and methods from other objects. Each object has an internal reference to another object called its prototype. You can extend and inherit from existing objects using the `prototype` property or the `extends` keyword.
+
+```javascript
+class Vehicle {
+  constructor(make) {
+    this.make = make;
+  }
+
+  drive() {
+    console.log(`Driving ${this.make}`);
+  }
+}
+
+class Car extends Vehicle {
+  constructor(make, model) {
+    super(make);
+    this.model = model;
+  }
+
+  // Additional methods...
+}
+
+const myCar = new Car('Toyota', 'Corolla');
+myCar.drive(); // Output: Driving Toyota
+```
+
+4. Encapsulation: OOP promotes encapsulation, which involves bundling related properties and methods within an object and hiding internal implementation details. In JavaScript, you can use closures and the `private` class fields proposal to achieve encapsulation.
+
+```javascript
+class Car {
+  #mileage = 0; // Private field (using class fields proposal)
+
+  drive() {
+    this.#mileage++;
+  }
+
+  getMileage() {
+    return this.#mileage;
+  }
+}
+
+const myCar = new Car();
+myCar.drive();
+myCar.drive();
+console.log(myCar.getMileage()); // Output: 2
+```
+
+These are the fundamental concepts of OOP in JavaScript. They allow you to create modular, reusable, and organized code, making it easier to maintain and understand complex applications.

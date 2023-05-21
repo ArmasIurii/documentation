@@ -1,0 +1,65 @@
+
+
+<-- Parent Component -->
+
+<div>App Component</div>
+
+<app-child-component class="demo">
+  <h3 class="header">here is displaied child header</h3>
+
+  <body>
+    child-component Body
+  </body>
+
+  <footer>child-component footer</footer>
+</app-child-component>
+
+<ng-template #ref let-element>
+  <p>{{element}} I am from App component</p>
+</ng-template>\
+
+<-- Parent Component -->
+
+
+
+<-- Child Component -->
+
+<ng-content select=".header"></ng-content>
+
+<hr />
+
+<p>child-component works!</p>
+
+<hr />
+
+<ng-content select="body"></ng-content>
+
+<hr />
+
+<ng-content select="footer"></ng-content>
+
+<hr>
+
+<ng-template #ref let-string="foo" let-prefix>
+    <p><b>{{prefix}}</b> I am template, the templatOutlet is: <b>{{string}}</b></p>
+</ng-template>
+
+<ng-container *ngTemplateOutlet="ref; context: {foo: 'fooContext', $implicit:'Hello'}"></ng-container>
+
+<hr>
+
+<!-- <ng-container *ngIf="true">
+    <div *ngFor="let item of [1,2,3]">{{item}} </div>
+</ng-container> -->
+
+<h3> Template Chapter</h3>
+
+<ng-template #defaultTemplate let-element>
+    <p><b>{{element}}</b> I'm default template</p>
+</ng-template>
+
+<div *ngFor="let item of [1,2,3]">
+    <ng-container *ngTemplateOutlet='template || defaultTemplate; context: {$implicit:item}'></ng-container>
+</div>
+
+<-- Child Component -->
